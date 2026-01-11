@@ -11,9 +11,9 @@ public class PomodoroSession
     // Take one second off timer
     public bool Tick()
     {
-        _state.SetTimeRemaining(_state.GetTimeRemaining() - 1);
+        _state.TimeRemaining -= 1;
         // See if time ran out
-        return _state.GetTimeRemaining() <= 0;
+        return _state.TimeRemaining <= 0;
     }
 
     // Get ready for next session
@@ -22,15 +22,15 @@ public class PomodoroSession
         _state.ToggleSessionType();
 
         // Work out how long the next session is
-        if (_state.GetSessionType() == SessionType.Work)
+        if (_state.SessionType == SessionType.Work)
         {
-            _state.SetTimeRemaining(Constants.WorkDuration);
+            _state.TimeRemaining = Constants.WorkDuration;
         }
         else
         {
-            _state.SetTimeRemaining(Constants.BreakDuration);
+            _state.TimeRemaining = Constants.BreakDuration;
         }
 
-        return _state.GetSessionType();
+        return _state.SessionType;
     }
 }

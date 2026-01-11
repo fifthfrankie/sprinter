@@ -44,12 +44,12 @@ public class CommandHandler
     private void HandleStart()
     {
         // Only start if timer is stopped
-        if (!_state.GetIsRunning())
+        if (!_state.IsRunning)
         {
             // Make timer go
             _timer.Start();
             // Remember timer is going now
-            _state.SetIsRunning(true);
+            _state.IsRunning = true;
             // Show the timer on screen
             _display.DisplayTimer(_state);
             // Show the commands
@@ -61,12 +61,12 @@ public class CommandHandler
     private void HandlePause()
     {
         // Only stop if timer is going
-        if (_state.GetIsRunning())
+        if (_state.IsRunning)
         {
             // Stop timer
             _timer.Stop();
             // Remember timer is stopped now
-            _state.SetIsRunning(false);
+            _state.IsRunning = false;
             // Show the timer on screen
             _display.DisplayTimer(_state);
             // Show the commands
@@ -80,13 +80,13 @@ public class CommandHandler
         // Stop timer
         _timer.Stop();
         // Remember timer is stopped
-        _state.SetIsRunning(false);
+        _state.IsRunning = false;
         // Set to work session
-        _state.SetSessionType(SessionType.Work);
+        _state.SessionType = SessionType.Work;
         // Put time back to start
-        _state.SetTimeRemaining(Constants.WorkDuration);
+        _state.TimeRemaining = Constants.WorkDuration;
         // Set sessions to zero
-        _state.SetSessionsCompleted(0);
+        _state.SessionsCompleted = 0;
         // Show the timer on screen
         _display.DisplayTimer(_state);
         // Show the commands

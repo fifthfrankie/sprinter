@@ -44,7 +44,7 @@ class Program
     private static void OnTimerTick(TimerState state, PomodoroSession session, TimerDisplay display)
     {
         // Stop if timer isn't going
-        if (!state.GetIsRunning())
+        if (!state.IsRunning)
             return;
 
         // Take time off the clock
@@ -55,8 +55,8 @@ class Program
         {
             // Get ready for next session
             var nextType = session.CompleteSession();
-            // Show the done message
-            display.DisplayCompletion(state.GetSessionType(), state.GetSessionsCompleted());
+            // Show done message
+            display.DisplayCompletion(state.SessionType, state.SessionsCompleted);
             // Ask what to do next
             display.DisplayNextSessionPrompt();
         }

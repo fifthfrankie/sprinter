@@ -24,52 +24,32 @@ public class TimerState
         Reset();
     }
 
-    // Get how much time is left
-    public int GetTimeRemaining()
+    // How much time is left
+    public int TimeRemaining
     {
-        return _timeRemaining;
+        get => _timeRemaining;
+        set => _timeRemaining = value;
     }
 
-    // Set how much time is left
-    public void SetTimeRemaining(int time)
+    // Which type of session we're on
+    public SessionType SessionType
     {
-        _timeRemaining = time;
-    }
-
-    // Get which type of session we're on
-    public SessionType GetSessionType()
-    {
-        return _sessionType;
-    }
-
-    // Set which type of session we're on
-    public void SetSessionType(SessionType type)
-    {
-        _sessionType = type;
+        get => _sessionType;
+        set => _sessionType = value;
     }
 
     // See if timer is going
-    public bool GetIsRunning()
+    public bool IsRunning
     {
-        return _isRunning;
+        get => _isRunning;
+        set => _isRunning = value;
     }
 
-    // Set if timer is going
-    public void SetIsRunning(bool running)
+    // How many sessions we've done
+    public int SessionsCompleted
     {
-        _isRunning = running;
-    }
-
-    // Get how many sessions we've done
-    public int GetSessionsCompleted()
-    {
-        return _sessionsCompleted;
-    }
-
-    // Set how many sessions we've done
-    public void SetSessionsCompleted(int sessions)
-    {
-        _sessionsCompleted = sessions;
+        get => _sessionsCompleted;
+        set => _sessionsCompleted = value;
     }
 
     // Put everything back to start

@@ -8,10 +8,10 @@ public class TimerDisplay
         // Clear the screen
         Console.Clear();
         // Turn seconds into time we can show
-        TimeSpan timeSpan = TimeSpan.FromSeconds(state.GetTimeRemaining());
+        TimeSpan timeSpan = TimeSpan.FromSeconds(state.TimeRemaining);
 
         // Pick the right name for the session
-        string sessionType = state.GetSessionType() == SessionType.Work ? "WORK SESSION" : "BREAK TIME";
+        string sessionType = state.SessionType == SessionType.Work ? "WORK SESSION" : "BREAK TIME";
         Text.WriteTitle(sessionType);
 
         // Show how much time is left
@@ -20,14 +20,14 @@ public class TimerDisplay
         Console.WriteLine();
 
         // Work out what the timer is doing
-        string status = state.GetIsRunning() ? "RUNNING" : "PAUSED";
+        string status = state.IsRunning ? "RUNNING" : "PAUSED";
         // Show if timer is going or stopped
         Console.WriteLine($"    Status: {status}");
         // Show a blank line
         Console.WriteLine();
 
         // Show how many sessions we've done
-        Console.WriteLine($"    Sessions: {state.GetSessionsCompleted()}");
+        Console.WriteLine($"    Sessions: {state.SessionsCompleted}");
     }
 
     // Show the commands user can use

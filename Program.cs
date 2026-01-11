@@ -58,11 +58,8 @@ class Program
 
         // Display session type
         string sessionType = isWorkSession ? "WORK SESSION" : "BREAK TIME";
-        Console.WriteLine($"═══════════════════════════════");
-        Console.WriteLine($"     {sessionType}");
-        Console.WriteLine($"═══════════════════════════════");
-        Console.WriteLine();    
-    
+        Text.WriteTitle(sessionType);
+
         // Display countdown (mm:ss format)
         Console.WriteLine($"    {timeSpan.ToString(TIMER_FORMAT)}");
         Console.WriteLine();
@@ -79,14 +76,13 @@ class Program
     static void DisplayInstructions()
     {
         Console.WriteLine();
-        Console.WriteLine("═══════════════════════════════");
-        Console.WriteLine("         COMMANDS");
-        Console.WriteLine("═══════════════════════════════");
-        Console.WriteLine("  [S] Start/Resume");
-        Console.WriteLine("  [P] Pause");
-        Console.WriteLine("  [R] Reset");
-        Console.WriteLine("  [Q] Quit");
-        Console.WriteLine("═══════════════════════════════");
+        Text.WriteTitle("COMMANDS");
+        Text.WriteBox(
+            "[S] Start/Resume",
+            "[P] Pause",
+            "[R] Reset",
+            "[Q] Quit"
+        );
     }
 
     // === SESSION COMPLETION === //
@@ -100,20 +96,14 @@ class Program
         Console.Clear(); // Display completion
         
         if (isWorkSession)
-        
         {
-            Console.WriteLine("═══════════════════════════════");
-            Console.WriteLine("   WORK SESSION COMPLETE!");
-            Console.WriteLine("═══════════════════════════════");
+            Text.WriteTitle("WORK SESSION COMPLETE!");
             sessionsCompleted++;
         }
-        
+
         else
-        
         {
-            Console.WriteLine("═══════════════════════════════");
-            Console.WriteLine("   BREAK COMPLETE!");
-            Console.WriteLine("═══════════════════════════════"); 
+            Text.WriteTitle("BREAK COMPLETE!");
         }
         
         Console.WriteLine();
@@ -183,9 +173,7 @@ class Program
 
         // Show welcome screen
         Console.Clear();
-        Console.WriteLine("═══════════════════════════════");
-        Console.WriteLine("      POMODORO TIMER");
-        Console.WriteLine("═══════════════════════════════");
+        Text.WriteTitle("POMODORO TIMER");
         Console.WriteLine();
         Console.WriteLine("  Work: 25 minutes");
         Console.WriteLine("  Break: 5 minutes");
